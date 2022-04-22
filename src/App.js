@@ -9,9 +9,35 @@ import Diary from './pages/Diary';
 
 import { type } from '@testing-library/user-event/dist/type';
 
+// const reducer = (state, action) => {
+//   let newState = [];
+//   switch ((action, type)) {
+//     case 'INIT': {
+//       return action.data;
+//     }
+//     case 'CREATE': {
+//       newState = [action.data, ...state];
+//       break;
+//     }
+//     case 'REMOVE': {
+//       newState = state.filter((it) => it.id !== action.targetId);
+//       break;
+//     }
+//     case 'EDIT': {
+//       //id 제외하고 다 바꿈
+//       newState = state.map((it) =>
+//         it.id === action.data.id ? { ...action.state } : it
+//       );
+//       break;
+//     }
+//     default:
+//       return state;
+//   }
+//   return newState;
+// };
 const reducer = (state, action) => {
   let newState = [];
-  switch ((action, type)) {
+  switch (action.type) {
     case 'INIT': {
       return action.data;
     }
@@ -24,15 +50,16 @@ const reducer = (state, action) => {
       break;
     }
     case 'EDIT': {
-      //id 제외하고 다 바꿈
       newState = state.map((it) =>
-        it.id === action.data.id ? { ...action.state } : it
+        it.id === action.data.id ? { ...action.data } : it
       );
       break;
     }
     default:
       return state;
   }
+
+  // localStorage.setItem("diary", JSON.stringify(newState));
   return newState;
 };
 export const DiaryStateContext = React.createContext();
@@ -125,8 +152,8 @@ function App() {
             <Routes>
               <Route path='/' element={<Home />} />
               <Route path='/new' element={<New />} />
-              <Route path='/edit' element={<Edit />} />
-              <Route path='/diary:id' element={<Diary />} />
+              <Route path='/edit/:id' element={<Edit />} />
+              <Route path='/diary/:id' element={<Diary />} />
             </Routes>
           </div>
         </BrowserRouter>
