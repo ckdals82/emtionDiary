@@ -10,10 +10,11 @@ Router 활용 a태그를 사용하는 MPA 방식이 아닌 SPA 방식으로 프�
 일기장 CRUD를 구현
 
 # react hooks
-useMemo , useCallback
+
 연산 최적화를 활용 , useCallback 으로 무분별한 함수 재생생을 막기 위해 사용함.
 
 useReducer
 상태 변화 로직들을 컴포넌트로 부터 독립시키기 위해 사용
 코드가 길어지고 복잡하지 않은 컴포넌트를 위함
 컴포넌트 바깥으로 상태 변화 로직들을 분리시킴
+
