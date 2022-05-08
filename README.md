@@ -8,6 +8,7 @@ Router 활용 a태그를 사용하는 MPA 방식이 아닌 SPA 방식으로 프�
 # 백엔드 개발자와 협업
 백엔드 개발자에게 요청한 API 활용
 일기장 CRUD를 구현
+REST API 활용
 
 # react hooks
 
@@ -19,3 +20,6 @@ useReducer
 컴포넌트 바깥으로 상태 변화 로직들을 분리시킴
 
 # 컴포넌트 단위로 branch 생성후 작업
+
+# 일기장 CRUD 구현 ver 1.0
+  로그인 기능 구현중 ver 1.1
