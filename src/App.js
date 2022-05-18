@@ -112,18 +112,21 @@ function App() {
   //2. axios로 데이터 넣기
   //axios 코드
   useEffect(() => {
-    axios.get('http://218.48.14.96/diaries/').then((response) => {
-      console.log(response.data);
-      console.log('===============================');
-      if (response) {
-        const diaryList = response.data.sort(
-          (a, b) => parseInt(b.id) - parseInt(a.id)
-        );
-        data.current = parseInt(diaryList[0].id + 1);
+    axios
+      .get('http://211.202.74.84/api/diaries/')
+      .then((response) => {
+        console.log(response.data);
+        console.log('===============================');
+        if (response) {
+          const diaryList = response.data.sort(
+            (a, b) => parseInt(b.id) - parseInt(a.id)
+          );
+          data.current = parseInt(diaryList[0].id + 1);
 
-        dispatch({ type: 'INIT', data: diaryList });
-      }
-    });
+          dispatch({ type: 'INIT', data: diaryList });
+        }
+      })
+      .catch((err) => console.log(err));
   }, []);
 
   // 3. 아래 주석 해제 하고 기본값 6인 useRef 줄 삭제
@@ -142,20 +145,20 @@ function App() {
       }
     });
     axios
-      .post('http://218.48.14.96/diaries/', {
+      .post('http://211.202.74.84/api/diaries/', {
         date: new Date(date).getTime(),
         content: content,
         emotion: emotion
       })
-      .then((response) => {
-        console.log('===============================');
-      });
+      .then((res) => console.log(res.data))
+      .catch((err) => console.log(err));
+
     dataId.current += 1;
   };
   //REMOVE
   const onRemove = (targetId) => {
     dispatch({ type: 'REMOVE', targetId });
-    axios.delete(`http://218.48.14.96/diaries/${targetId}/`);
+    axios.delete(`http://211.202.74.84/api/diaries/${targetId}/`);
   };
   //EDIT
   const onEdit = (targetId, date, content, emotion) => {
@@ -168,7 +171,7 @@ function App() {
         emotion
       }
     });
-    axios.patch(`http://218.48.14.96/diaries/${targetId}/`, {
+    axios.patch(`http://211.202.74.84/api/diaries/${targetId}/`, {
       date: date,
       content: content,
       emotion: emotion
