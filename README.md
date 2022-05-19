@@ -3,7 +3,6 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 # React
 SPA 방식을 따르면서 CSR 방식으로 랜더링
-Router 활용 a태그를 사용하는 MPA 방식이 아닌 SPA 방식으로 프로젝트를 구현
 
 # 백엔드 개발자와 협업
 백엔드 개발자에게 요청한 API 활용
